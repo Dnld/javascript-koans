@@ -40,8 +40,21 @@ describe("About Applying What We Have Learnt", function() {
       var productsICanEat = [];
 
       /* solve using filter() & all() / any() */
+        
+      var noMushrooms = function(ingredient) {
+        if (ingredient !== 'mushrooms') {
+          return true;
+        }
+      };
 
-      expect(productsICanEat.length).toBe(FILL_ME_IN);
+      products.filter(function(product) {
+        if (product.containsNuts === false && 
+          product.ingredients.every(noMushrooms)) {
+          productsICanEat.push(product);
+        }
+      });
+
+      expect(productsICanEat.length).toBe(1);
   });
 
   /*********************************************************************************/
